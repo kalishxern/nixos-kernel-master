@@ -10,6 +10,8 @@ task:
     GITHUB_TOKEN: ENCRYPTED[!b0a28a9a328daf92f7bfdf3d5603d2e5e130127f32d2e6311e702c154141e558c7a80e7199305f109a1ba46cd811910b!]
   setup_nix_script: |
     echo "experimental-features = nix-command flakes" >> /etc/nix/nix.conf
+    echo "extra-substituters = https://nixos-kernel-master.cachix.org" >> /etc/nix/nix.conf
+    echo "extra-trusted-public-keys = nixos-kernel-master.cachix.org-1:bUDOUsQh34oWGGJ0IpFNCkgiUEYWqrwM2f92NKZQE/I=" >> /etc/nix/nix.conf
   build_script: |
     git clone https://oauth2:$GITHUB_TOKEN@github.com/kalishxern/nixos-config
     cd nixos-config
