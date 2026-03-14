@@ -6,13 +6,12 @@ task:
     cpu: 8
     memory: 16G
   env:
-    CACHIX_AUTH_TOKEN: ENCRYPTED[!ENCRYPTED[!e57d31c87aa2390714db23d5458eee97034d0bdd1920ba51bab0f14b54822b32028306e42e3b657765d2d087f3138476!]!]
-    GITHUB_TOKEN: ENCRYPTED[!your_encrypted_github_token_here!]
+    CACHIX_AUTH_TOKEN: ENCRYPTED[!eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyYWU0YjBkOC1jNjRiLTRjNTQtYjFjNy04NWRjOTAwNzNkYzgiLCJzY29wZXMiOiJ0eCJ9.raQUR1sZBDfFWMeuBosjdjnSJhBRGLOGAzYaECxmpe0!]
+    GITHUB_TOKEN: ENCRYPTED[!e57d31c87aa2390714db23d5458eee97034d0bdd1920ba51bab0f14b54822b32028306e42e3b657765d2d087f3138476!]
   setup_nix_script: |
     echo "experimental-features = nix-command flakes" >> /etc/nix/nix.conf
-  clone_script: |
-    git clone https://oauth2:$GITHUB_TOKEN@github.com/kalishxern/nixos-config
   build_script: |
+    git clone https://oauth2:$GITHUB_TOKEN@github.com/kalishxern/nixos-config
     nix run nixpkgs#cachix -- authtoken $CACHIX_AUTH_TOKEN
     nix run nixpkgs#cachix -- use nixos-kernel-master
     nix run nixpkgs#cachix -- watch-exec nixos-kernel-master -- \
