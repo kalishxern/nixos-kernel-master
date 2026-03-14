@@ -17,5 +17,5 @@ task:
     nix run nixpkgs#cachix -- authtoken $CACHIX_AUTH_TOKEN
     nix run nixpkgs#cachix -- use nixos-kernel-master
     nix run nixpkgs#cachix -- watch-exec nixos-kernel-master -- \
-      nix build .#nixosConfigurations.nixos-ci.config.boot.kernelPackages.kernel \
+      nix build .#nixosConfigurations.nixos-ci.config.system.build.toplevel \
       --no-link --print-out-paths
