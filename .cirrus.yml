@@ -6,7 +6,7 @@ task:
     cpu: 8
     memory: 16G
   env:
-    CACHIX_AUTH_TOKEN: ENCRYPTED[!eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyYWU0YjBkOC1jNjRiLTRjNTQtYjFjNy04NWRjOTAwNzNkYzgiLCJzY29wZXMiOiJ0eCJ9.raQUR1sZBDfFWMeuBosjdjnSJhBRGLOGAzYaECxmpe0!]
+    CACHIX_AUTH_TOKEN: ENCRYPTED[!cc7126ff7084e71fb6117f512316fb55f0845fd36d3ba5ffdddc879904c7578be77a3ade4043337a0aa27898ec23db26!]
     GITHUB_TOKEN: ENCRYPTED[!e57d31c87aa2390714db23d5458eee97034d0bdd1920ba51bab0f14b54822b32028306e42e3b657765d2d087f3138476!]
   setup_nix_script: |
     echo "experimental-features = nix-command flakes" >> /etc/nix/nix.conf
