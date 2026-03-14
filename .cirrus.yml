@@ -11,7 +11,7 @@ task:
   setup_nix_script: |
     echo "experimental-features = nix-command flakes" >> /etc/nix/nix.conf
   clone_script: |
-    git clone https://x-token:$GITHUB_TOKEN@github.com/kalishxern/nixos-config
+    git clone https://oauth2:$GITHUB_TOKEN@github.com/kalishxern/nixos-config
   build_script: |
     nix run nixpkgs#cachix -- authtoken $CACHIX_AUTH_TOKEN
     nix run nixpkgs#cachix -- use nixos-kernel-master
