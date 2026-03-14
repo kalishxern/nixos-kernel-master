@@ -1,0 +1,20 @@
+task:
+  name: Build NixOS Kernel (master)
+  timeout_in: 180m
+  container:
+    image: nixos/nix:latest
+    cpu: 8
+    memory: 16G
+  env:
+    CACHIX_AUTH_TOKEN: ENCRYPTED[!your_encrypted_token_here!]
+    GITHUB_TOKEN: ENCRYPTED[!your_encrypted_github_token_here!]
+  setup_nix_script: |
+    echo "experimental-features = nix-command flakes" >> /etc/nix/nix.conf
+  clone_script: |
+    git clone https://x-token:$GITHUB_TOKEN@github.com/kalishxern/nixos-config
+  build_script: |
+    nix run nixpkgs#cachix -- authtoken $CACHIX_AUTH_TOKEN
+    nix run nixpkgs#cachix -- use nixos-kernel-master
+    nix run nixpkgs#cachix -- watch-exec nixos-kernel-master -- \
+      nix build ./nixos-config#nixosConfigurations.nixos-ci.config.boot.kernelPackages.kernel \
+      --no-link --print-out-paths
