@@ -4,7 +4,7 @@ task:
   container:
     image: nixos/nix:latest
     cpu: 8
-    memory: 16G
+    memory: 32G
   env:
     CACHIX_AUTH_TOKEN: ENCRYPTED[!cc7126ff7084e71fb6117f512316fb55f0845fd36d3ba5ffdddc879904c7578be77a3ade4043337a0aa27898ec23db26!]
     GITHUB_TOKEN: ENCRYPTED[!b0a28a9a328daf92f7bfdf3d5603d2e5e130127f32d2e6311e702c154141e558c7a80e7199305f109a1ba46cd811910b!]
